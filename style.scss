@@ -1,0 +1,541 @@
+
+
+// ================ Import ================
+
+@import 'scss/variables';
+@import 'scss/mixins';
+@import 'pages';
+
+// ================ Main ================
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  min-width: 340px;
+
+  margin: 0;
+  padding: 0;
+  background-color: #FFFFFF;
+
+  font-size: 1.6rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+}
+
+// ================ Loader ================
+
+.container__loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+
+  background-color: rgba($color: #f5ebeb, $alpha: 0.9);
+
+ 
+  animation: loader 1s ease 2.5s;
+  
+  animation-fill-mode: both;
+
+  z-index: 1000;
+}
+
+.loader {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+
+  @include spinner(100px, 100px, $Primary);
+
+  & p {
+    font-size: 4.5rem;
+    color: rgba(57, 27, 230, .8);
+
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+}
+
+// ================ Header ================
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  width: 100%;
+  height: 70px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+
+  padding: 0 24px;
+
+  font-family: 'Shrikhand', cursive;
+  color: black;
+
+  &__logo {
+    font-size: 2.6rem;
+    margin: 0;
+  }
+
+  &__icon {
+    width: 20px;
+    font-size: 1.8rem;
+    color: #000000;
+  }
+
+  &--navigation {
+    justify-content: space-between;
+
+    &:after {
+      content: '';
+
+      width: 20px;
+    }
+  }
+}
+
+// ================ Container ================
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+}
+
+// ================ Situation ================
+
+.situation {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+
+  height: 60px;
+
+  padding: 0 13px;
+  background-color: $darkGrey;
+
+  &__text {
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+  & i {
+    font-size: 1.6rem;
+    margin-right: 16px;
+  }
+}
+
+// ================ Promotion ================
+
+.promotion {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+
+  background: $lightGrey;
+
+  padding: 34px 13px 42px 13px;
+
+  &--title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  &__subtitle {
+    width: 100%;
+
+    font-size: 1.6rem;
+    text-align: center;
+    color: rgba($color: #000000, $alpha: 0.75);
+
+    margin-top: 0;
+    margin-bottom: 28px;
+  }
+}
+
+// ================ MAin button ================
+
+.main-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 42px;
+  border-radius: 100px;
+  padding: 0 18px;
+  background-color: #686868;
+  background-image: linear-gradient(0deg, rgba(147, 86, 220, .9), rgba(255, 121, 218, .9));
+  box-shadow: .25rem .25rem 10px rgba(0, 0, 0, .25);
+  border: 0;
+  transition: all .3s;
+
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+
+  color: #fff;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: #fff;
+    box-shadow: .25rem .25rem 10px rgba(0, 0, 0, .5);
+  }
+}
+
+// ================ Tutoriel ================
+
+.tutoriel {
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: column wrap;
+
+  width: 100%;
+  padding: 21px;
+  counter-reset: step;
+
+  &__title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  &__list {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    list-style-type: none;
+    padding-left: 11px;
+
+    &-item {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-start;
+      align-items: center;
+
+      position: relative;
+      height: 64px;
+      width: 100%;
+      min-width: 280px;
+      border-radius: 15px;
+      background: $lightGrey;
+      box-shadow: 4px 4px 16px -6px rgba(0, 0, 0, 0.2);
+      padding: 0 34px;
+      margin-bottom: 26px;
+      transition: all .3s;
+
+      font-size: 1.4rem;
+      font-weight: bold;
+
+      &:before {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: absolute;
+        left: -11px;
+        width: 22px;
+        height: 22px;
+        border-radius: 100%;
+        background-color: $Primary;
+
+        font-size: 1rem;
+        font-weight: 700;
+        color: #FFFFFF;
+      }
+
+      @for $i from 1 to 4 {
+        &--step-#{$i}::before {
+          content: counter(step);
+          counter-increment: step;
+        }
+      }
+
+      & i {
+        width: 20px;
+        font-size: 1.4rem;
+        color: rgba($color: #000000, $alpha: 0.5);
+
+        margin-right: 10px;
+      }
+
+      &:first-of-type i {
+        font-size: 1.6rem;
+      }
+
+      &:hover {
+        background-color: #f5edff;
+
+        & i {
+          color: $Primary;
+        }
+      }
+    }
+  }
+}
+
+// ================ Restaurants ================
+
+.restaurants {
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: column wrap;
+
+  width: 100%;
+  padding: 21px;
+  background-color: $lightGrey;
+
+  &__title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
+
+// ================ Card ================
+
+.card-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  height: 260px;
+  width: 100%;
+  border-radius: 25px;
+  box-shadow: 4px 4px 16px -6px rgba(0, 0, 0, 0.2);
+  margin-bottom: 22px;
+
+  text-decoration: none;
+
+  &__main {
+    height: 70%;
+    width: 100%;
+    position: relative;
+
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    overflow: hidden;
+  }
+
+  &__main img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__new {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 30px;
+    position: absolute;
+    top: 16px;
+    right: 14px;
+    background-color: #99e2d0;
+
+    font-weight: 500;
+    color: #008765;
+    padding: 0 13px;
+    border-radius: 2px;
+  }
+
+  &__footer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+
+    width: 100%;
+    padding: 0 18px 0 13px;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #000000;
+
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-size: 1.4rem;
+    color: rgba($color: #000000, $alpha: 0.75);
+
+    margin: 0;
+  }
+}
+
+
+// ================ heart ================
+
+.heart {
+  position: relative;
+  width: 24px;
+  height: 24px;
+
+  &__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity .3s;
+
+    & i {
+      font-size: 24px;
+    }
+
+    &--empty {
+      opacity: 1;
+      color: #000000;
+    }
+
+    &--full {
+      opacity: 0;
+      background: -webkit-gradient(linear, right top, left bottom, from($Primary), to($secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  &:hover {
+    .heart__item--empty {
+      opacity: 0;
+    }
+
+    .heart__item--full {
+      opacity: 1;
+    }
+  }
+}
+
+// ================ Footer ================
+
+.footer {
+  display: flex;
+  flex-flow: column nowrap;
+
+  width: 100%;
+  padding: 20px 20px 26px 20px;
+  background-color: #353535;
+  
+  &__container{
+    width: 1280px;
+    margin: auto;
+  
+  }
+  &__logo {
+    font-size: 1.8rem;
+    font-family: 'Shrikhand', cursive;
+    font-weight: normal;
+    color: #FFF;
+
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__list-item {
+    margin-bottom: 4px;
+  }
+
+  &__link {
+    color: #FFF;
+    text-decoration: none;
+  }
+
+  &__icon {
+    width: 14px;
+    font-size: 1.2rem;
+    margin-right: 6px;
+  }
+}
+
+// ================ Keyframe ================
+
+@keyframes loader {
+  0% {
+    opacity: 1;
+
+  }
+
+  100% {
+    opacity: 0;
+    z-index: -10;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// ================ screen ================
+
+@media screen and (min-width: 950px) {
+  .card-container {
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    & .card {
+      width: calc(50% - 12px);
+    }
+  }
+
+  .tutoriel {
+    &__list {
+      flex-flow: row nowrap;
+      justify-content: space-between;
+    }
+
+    &__list-item {
+      width: calc((100% / 3) - 16px);
+    }
+  }
+}
